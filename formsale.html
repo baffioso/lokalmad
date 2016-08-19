@@ -88,7 +88,12 @@
                 //adressen tilføjes kortet
                 $.getJSON(data.data.href, function(data) {
                     var koordinater = data.adgangsadresse.adgangspunkt.koordinater;
-                    var marker = L.marker([koordinater[1], koordinater[0]]).addTo(map);;
+                    var marker = L.marker([koordinater[1], koordinater[0]]).addTo(map);
+                    //panorerer hen til adressen
+                    map.setView({
+                      lat: koordinater[1],
+                      lng: koordinater[0]
+                    }, 17)
                 });
             }
         });
