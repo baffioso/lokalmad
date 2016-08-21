@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- Angular -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+    .grid {
+      border: 2px solid black;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body ng-app="myApp">
+
+  <div class="container" ng-controller="productController" border="1">
+    <div class="col-md-3 grid" ng-repeat="product in products">
+      <img class="icon" ng-src="{{ product.img }}">
+      <h2>{{ product.name | uppercase }}</h2>
+    </div>
+  </div>
+
+  <script>
+    var app = angular.module('myApp', []);
+
+    app.controller('productController', function($scope) {
+      $scope.products = [{
+        "name": "Kartofler",
+        "img": "img/potato.png"
+      }, {
+        "name": "Agurker",
+        "img": "img/cucumber.png"
+      }, {
+        "name": "Æg",
+        "img": "img/egg.png"
+      }, {
+        "name": "Tomater",
+        "img": "img/tomato.jpg"
+      }, {
+        "name": "Apple",
+        "img": "img/apple.png"
+      }, {
+        "name": "Broccoli",
+        "img": "img/broccoli.jpeg"
+      }, {
+        "name": "Løg",
+        "img": "img/onion.png"
+      }, {
+        "name": "Kylling",
+        "img": "img/chicken.jpg"
+      }];
+    });
+    
+  </script>
+</body>
+
+</html>
