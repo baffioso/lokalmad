@@ -5,26 +5,40 @@
   <meta charset="utf-8">
 
   <!-- Angular -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <style>
+  <style media="screen">
     .grid {
-      border: 2px solid black;
-      border-radius: 5px;
+      border: solid gray;
+    }
+    h4 {
+      text-align: center;
+    }
+    .img-responsive {
+      margin: 0 auto;
     }
   </style>
+
 </head>
 
 <body ng-app="myApp">
 
   <div class="container" ng-controller="productController" border="1">
-    <div class="col-md-3 grid" ng-repeat="product in products">
-      <img class="icon" ng-src="{{ product.img }}">
-      <h2>{{ product.name | uppercase }}</h2>
+    <div class="col-md-8">
+      <label>Søg:<input class="form-control" type="text" ng-model="searchProduct"></label>
+      <div class="row"></div>
+      <div class="col-md-3 grid btn-default" ng-repeat="product in products | filter:searchProduct | orderBy:'name'" >
+        <img class="img-responsive" ng-src="{{ product.img }}">
+        <h4>{{ product.name | uppercase }}</h4>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h4>Hvor langt vil du køre?</h4>
+      <img class="img-responsive" src="img/slider.png"/>
     </div>
   </div>
 
@@ -43,7 +57,7 @@
         "img": "img/egg.png"
       }, {
         "name": "Tomater",
-        "img": "img/tomato.jpg"
+        "img": "img/tomato.png"
       }, {
         "name": "Apple",
         "img": "img/apple.png"
@@ -56,9 +70,33 @@
       }, {
         "name": "Kylling",
         "img": "img/chicken.jpg"
+      }, {
+        "name": "Jordbær",
+        "img": "img/strawberry.png"
+      }, {
+        "name": "Gulerod",
+        "img": "img/carrot.png"
+      }, {
+        "name": "Kål",
+        "img": "img/cabbage.png"
+      }, {
+        "name": "Kirsebær",
+        "img": "img/cherry.ico"
+      }, {
+        "name": "Blomkål",
+        "img": "img/cauliflower.png"
+      }, {
+        "name": "Marmelade",
+        "img": "img/jam.jpeg"
+      }, {
+        "name": "Juice",
+        "img": "img/juice.png"
+      }, {
+        "name": "Rødbede",
+        "img": "img/beetroot.jpeg"
       }];
     });
-    
+
   </script>
 </body>
 
